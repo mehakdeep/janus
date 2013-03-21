@@ -67,6 +67,8 @@ imap <leader>l <ESC>:TagbarToggle<cr>i
 " Fast saving
 nmap <leader>w :w!<cr>
 
+" Toggle Comments
+nmap <leader>cc <plug>NERDComToggleComment<cr>
 
 """"""""""""""""""""""""""""""
 " => Visual mode related

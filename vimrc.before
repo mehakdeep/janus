@@ -15,3 +15,9 @@ endif
 " Disable janus plugins
 call janus#disable_plugin('buffergator')
 call janus#disable_plugin('ctrlp')
+call janus#disable_plugin('supertab')
+call janus#disable_plugin('syntastic')
+call janus#disable_plugin('vroom')
+call janus#disable_plugin('webapi')
+call janus#disable_plugin('vimwiki')
+
