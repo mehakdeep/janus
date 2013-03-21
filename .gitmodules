@@ -1,0 +1,15 @@
+[submodule "minibufexpl"]
+	path = minibufexpl
+	url = https://github.com/fholgado/minibufexpl.vim
+[submodule "powerline"]
+	path = powerline
+	url = git://github.com/Lokaltog/powerline.git
+[submodule "command-t"]
+	path = command-t
+	url = git://github.com/wincent/Command-T.git
+[submodule "bufkill"]
+	path = bufkill
+	url = git://github.com/oblitum/bufkill.git
+[submodule "autoclose"]
+	path = autoclose
+	url = git://github.com/vim-scripts/AutoClose.git
