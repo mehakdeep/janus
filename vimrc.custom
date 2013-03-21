@@ -1,0 +1,6 @@
+
+" Automatically load .vimprj if exists
+if filereadable(".vimprj")
+  source .vimprj
+endif
+

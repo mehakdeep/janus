@@ -224,3 +224,12 @@ command! -nargs=+ CommandCabbr call CommandCabbr(<f-args>)
 "CommandCabbr ccab CommandCabb
 CommandCabbr bd BD
 
+
+
+" ---
+
+
+
+" Load custom configuration
+
+source ~/.janus/vimrc.custom
