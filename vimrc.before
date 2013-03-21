@@ -1,0 +1,17 @@
+
+"Changing Leader Key
+let mapleader = ","
+
+" Map : to ; also in command mode.
+nnoremap ; :
+
+nnoremap <leader>ii :CtrlP<CR><space><bs>
+
+" Powerline
+if has("gui_running")
+  set rtp+=~/.janus/powerline/powerline/bindings/vim
+endif
+
+" Disable janus plugins
+call janus#disable_plugin('buffergator')
+call janus#disable_plugin('ctrlp')

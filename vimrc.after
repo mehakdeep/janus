@@ -1,0 +1,226 @@
+
+" ========== Source bindings ============ "
+source ~/.janus/vimrc.bindings
+
+" ========== Vim Basic Settings ============="
+
+" Powerline
+if has("gui_running")
+  set guifont=Menlo\ for\ Powerline:h12
+  let g:Powerline_symbols = 'fancy'
+else
+  set statusline=
+endif
+
+" Enable syntax highlighting
+syntax on
+
+" Make vim incompatible to vi.
+set nocompatible
+set modelines=0
+
+"TAB settings.
+set smartindent
+set autoindent
+set nowrap
+
+" More Common Settings.
+set encoding=utf-8
+set scrolloff=1
+set showmode
+set showcmd
+set hidden
+set wildmenu
+set wildmode=list:longest
+set visualbell
+set cursorline
+set ttyfast
+set ruler
+set nolist
+set laststatus=2
+set number
+set norelativenumber
+set shell=/bin/bash
+set lazyredraw
+set matchtime=3
+"set statusline=
+
+" Set title to window
+set title
+
+" Make pasting done without any indentation break."
+" set pastetoggle=<F3>
+
+" Make Vim able to edit crontab fiels again.
+set backupskip=/tmp/*,/private/tmp/*"
+
+" Enable Mouse
+set mouse=a
+
+"Settings for Searching and Moving
+nnoremap / /\v
+vnoremap / /\v
+set ignorecase
+set smartcase
+set gdefault
+set incsearch
+set showmatch
+set hlsearch
+
+" Make Vim handle long lines nicely.
+set nowrap
+set textwidth=80
+set formatoptions=qrn1
+set colorcolumn=154
+
+" To show special characters in Vim
+"set list
+set listchars=tab:▸\ ,eol:¬
+
+" Working with split screen nicely
+" Resize Split When the window is resized"
+au VimResized * :wincmd =
+
+
+" Wildmenu completion "
+set wildmenu
+set wildmode=list:longest
+set wildignore+=.hg,.git,.svn " Version Controls"
+set wildignore+=*.aux,*.out,*.toc "Latex Indermediate files"
+set wildignore+=*.jpg,*.bmp,*.gif,*.png,*.jpeg "Binary Imgs"
+set wildignore+=*.o,*.obj,*.exe,*.dll,*.manifest "Compiled Object files"
+set wildignore+=*.spl "Compiled speolling world list"
+set wildignore+=*.sw? "Vim swap files"
+set wildignore+=*.DS_Store "OSX SHIT"
+set wildignore+=*.luac "Lua byte code"
+set wildignore+=migrations "Django migrations"
+set wildignore+=*.pyc "Python Object codes"
+set wildignore+=*.orig "Merge resolution files"
+
+" Make Sure that Vim returns to the same line when we reopen a file"
+augroup line_return
+    au!
+    au BufReadPost *
+        \ if line("'\"") > 0 && line("'\"") <= line("$") |
+        \ execute 'normal! g`"zvzz' |
+        \ endif
+augroup END
+
+nnoremap g; g;zz
+
+
+" ========== Vim GUI Settings ============="
+
+" Removing scrollbars
+if has("gui_running")
+    set guitablabel=%-0.12t%M
+    set guioptions-=T
+    set guioptions-=r
+    set guioptions-=L
+    set guioptions+=a
+    set guioptions-=m
+    colo codeschool
+    set listchars=tab:▸\ ,eol:¬
+else
+    set t_Co=256
+    colorschem zenburn
+endif
+
+
+" ========== Plugin Settings =========="
+
+" Mini Buffer some settigns."
+let NERDTreeIgnore=['\~$', '\.pyc$']
+
+let g:miniBufExplMapWindowNavVim = 1
+let g:miniBufExplMapWindowNavArrows = 1
+let g:miniBufExplMapCTabSwitchBufs = 1
+let g:miniBufExplModSelTarget = 1
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => General
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Sets how many lines of history VIM has to remember
+set history=700
+
+" Enable filetype plugins
+filetype plugin on
+filetype indent on
+
+" Set to auto read when a file is changed from the outside
+set autoread
+
+" Leader key timeout
+set timeoutlen=500
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => VIM user interface
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Set 7 lines to the cursor - when moving vertically using j/k
+set so=5
+
+" For regular expressions turn magic on
+set magic
+
+" Show matching brackets when text indicator is over them
+set showmatch 
+
+" How many tenths of a second to blink when matching brackets
+set mat=2
+
+" No annoying sound on errors
+set noerrorbells
+set novisualbell
+set vb t_vb=
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Files, backups and undo
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Turn backup off, since most stuff is in SVN, git et.c anyway...
+set nobackup
+set nowb
+set noswapfile
+
+" Specify the behavior when switching between buffers 
+try
+  set switchbuf=useopen,usetab,newtab
+  set stal=2
+catch
+endtry
+
+" Return to last edit position when opening files (You want this!)
+"autocmd BufReadPost *
+     "\ if line("'\"") > 0 && line("'\"") <= line("$") |
+     "\   exe "normal! g`\"" |
+     "\ endif
+"" Remember info about open buffers on close
+"set viminfo^=%
+
+" Delete trailing white space on save, useful for Python and CoffeeScript ;)
+func! DeleteTrailingWS()
+  exe "normal mz"
+  %s/\s\+$//ge
+  exe "normal `z"
+endfunc
+autocmd BufWrite *.py :call DeleteTrailingWS()
+autocmd BufWrite *.coffee :call DeleteTrailingWS()
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Command Abbreviations 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" http://vim.wikia.com/wiki/Replace_a_builtin_command_using_cabbrev
+
+function! CommandCabbr(abbreviation, expansion)
+  execute 'cabbr ' . a:abbreviation . ' <c-r>=getcmdpos() == 1 && getcmdtype() == ":" ? "' . a:expansion . '" : "' . a:abbreviation . '"<CR>'
+endfunction
+
+command! -nargs=+ CommandCabbr call CommandCabbr(<f-args>)
+
+" Use it on itself to define a simpler abbreviation for itself.
+"CommandCabbr ccab CommandCabb
+CommandCabbr bd BD
+

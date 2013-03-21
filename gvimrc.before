@@ -1,0 +1,6 @@
+
+"Disable common bindings for MacVim
+if has("gui_running") && has("mac")
+  macmenu Tools.Make key=<nop>
+  macmenu File.New\ Tab key=<nop>
+endif
