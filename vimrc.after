@@ -4,6 +4,9 @@ source ~/.janus/vimrc.bindings
 
 " ========== Vim Basic Settings ============="
 
+" Disable auto comments
+autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+
 " Powerline
 if has("gui_running")
   set guifont=Menlo\ for\ Powerline:h12
@@ -71,7 +74,13 @@ set hlsearch
 set nowrap
 set textwidth=80
 set formatoptions=qrn1
-set colorcolumn=154
+"set colorcolumn=154
+
+" Performance
+set nospell
+set nocursorcolumn
+set nocursorline
+syntax sync minlines=256
 
 " To show special characters in Vim
 "set list

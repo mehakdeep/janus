@@ -13,9 +13,3 @@
 [submodule "autoclose"]
 	path = autoclose
 	url = git://github.com/vim-scripts/AutoClose.git
-[submodule "vimprj"]
-	path = vimprj
-	url = git://github.com/vim-scripts/vimprj.git
-[submodule "jshint"]
-	path = jshint
-	url = git://github.com/walm/jshint.vim.git
