@@ -8,12 +8,12 @@ source ~/.janus/vimrc.bindings
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
 " Powerline
-if has("gui_running")
-  set guifont=Menlo\ for\ Powerline:h12
-  let g:Powerline_symbols = 'fancy'
-else
-  set statusline=
-endif
+"if has("gui_running")
+  "set guifont=Menlo\ for\ Powerline:h12
+  "let g:Powerline_symbols = 'fancy'
+"else
+  "set statusline=
+"endif
 
 " Enable syntax highlighting
 syntax on
@@ -46,7 +46,7 @@ set norelativenumber
 set shell=/bin/bash
 set lazyredraw
 set matchtime=3
-"set statusline=
+set statusline=
 
 " Set title to window
 set title
@@ -128,18 +128,19 @@ if has("gui_running")
     set guioptions-=L
     set guioptions+=a
     set guioptions-=m
-    colo codeschool
-    set listchars=tab:▸\ ,eol:¬
+    colorscheme tomorrow 
+    "set listchars=tab:▸\ ,eol:¬
 else
     set t_Co=256
-    colorschem zenburn
+    set nonumber
+    colorscheme default 
 endif
 
 
 " ========== Plugin Settings =========="
 
 " Mini Buffer some settigns."
-let NERDTreeIgnore=['\~$', '\.pyc$']
+let NERDTreeIgnore=['\~$', '\.pyc$', '\.DS_Store']
 
 let g:miniBufExplMapWindowNavVim = 1
 let g:miniBufExplMapWindowNavArrows = 1
